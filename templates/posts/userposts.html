@@ -1,0 +1,27 @@
+<!doctype html>
+<head>
+     <script src="//cdn.jsdelivr.net/npm/jdenticon@1.6.0/dist/jdenticon.min.js" async></script>
+</head>
+
+<body>
+    {% for post in posts %}
+    
+    <div style="border:1px solid red;">
+        <div class="col-lg-2">
+            <a href="/profile?uid={{post[0]}}"><canvas width="80" height="80" data-jdenticon-hash="{{ post[4] }}"></canvas></a>
+        </div>
+        <div class="col-lg-10">
+            <h2 style="text-align:left;margin:5px 5px;">{{post[2]}}</h2>
+            <h5><a style="text-align:left;margin:5px 5px;float:left;" href="/profile?uid={{post[0]}}">Posted by: {{post[0]}}</a></h5>
+            <h4 style="text-align:right;margin:5px 5px;float:right;">Date: {{post[1]}}</h3>
+            <hr style="clear:both;"/>
+            
+        </div>
+        <p style="margin:5px 5px;text-align:left;font-size:14px;padding:5px 5px;">{{post[3]}}</p>
+    </div>
+    
+    <div class="clear"></div>
+    <br>
+    
+    {% endfor %}
+</body>

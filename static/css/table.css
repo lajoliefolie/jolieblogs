@@ -1,0 +1,105 @@
+.user_data{
+    border: 1px solid #e5e5e5;
+    border-spacing: 80px;
+    border-collapse: collapse;
+    border-width: 1px 0;
+    text-align: left;
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 16px;
+    margin-top: 10px;
+
+}
+td {
+    padding: 10px 0;     /* 10px top & bottom padding, 0px left & right */
+    border-width: 1px 0; /*  1px top & bottom border,  0px left & right */
+    border-color: #e5e5e5;
+    border-style: solid;
+}
+
+.table_header{
+    font-family: sans-serif;
+    font-size: 21px;
+    color: #0A0392;
+    text-align:center;
+    vertical-align:middle;
+    padding:0 15px 0 15px;
+}
+
+.wide {
+    max-width: 1000px;
+    text-align: center;
+    margin: auto;
+}
+
+.text_row {
+    font-family: sans-serif;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.button_row {
+    padding: 12px 0px;
+    font-size: 16px;
+    margin: auto;
+    text-align: center;
+}
+
+.delete_button {
+    color: #fff;
+    background-color: #B50101;
+}
+
+.admin_button {
+    color: #fff;
+    background-color: #286090;
+}
+
+.profile_button {
+    display:inline-block;
+    width:90%;
+    padding: 15px 32px !important;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px 0px;
+}
+
+.profile_button.important {
+    background-color:#f44336!important;
+}
+
+.post {
+    padding: 10px;
+    outline: 1px solid blue;
+}
+
+.clear {
+    clear:both;
+}
+
+.post p {
+    border: 2px solid red !important;
+    text-align: left;
+}
+
+.card {
+    outline: 1px solid blue;
+}
+
+/*.post h4 {
+    color: #F89093;
+    font-size: 24px;
+    text-align: left;
+    margin: 10px;
+    display:inline-block;
+    width: 100%;
+}
+
+.post h3 {
+    text-align: right;
+    display:inline-block;
+    width: 100%;
+    font-size: 16px;
+}*/

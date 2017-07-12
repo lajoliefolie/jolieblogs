@@ -1,0 +1,25 @@
+
+.sprite {
+    width: 64px; 
+    height: 64px;
+}
+.actioncont {
+    height: 175px;    
+}
+
+.spriteloc {
+    height: 60px;    
+}
+
+.stats { padding: 8px 6px 8px 6px; margin-bottom: 18px; }
+
+div {
+    border:0px solid;
+}
+
+.wolf {
+    display: block;
+    background: url(hold_img/wolf.png) no-repeat;
+    width: 180px; /* Width of new image */
+    height: 236px; /* Height of new image */
+}

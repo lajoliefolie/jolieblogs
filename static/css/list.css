@@ -1,0 +1,9 @@
+.button_list > li > a{
+    padding: 10px 0;     /* 10px top & bottom padding, 0px left & right */
+}
+
+ .button_list > li {
+     list-style: none;
+     margin:10px 0px;
+     width:100% !important;
+ }
