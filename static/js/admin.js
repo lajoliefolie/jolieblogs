@@ -38,11 +38,10 @@ $(document).ready(function(){
     }
     );
     // Inner button function call for updating admin permissions
-    $('body').on('click', '.admin_button', function() {
+    $('body').on('click', '.admin_button', function() { //.admin_button
         var user_id = $(this).attr('data-userid');
         var is_admin = $(this).attr('data-isadmin');
-        // console.log(user_id);
-        // console.log(is_admin);
+        console.log("I ran!");
         
         $.getJSON("/admin/update_admin", { //.get
             userid: user_id,
@@ -64,10 +63,9 @@ $(document).ready(function(){
                      window.location="/login/logout"
                 document.getElementById("get_users").click();
         });
-        
     });
+        
 });
-
 // $(document).ready(function()
 // {   
 //     $('.buttons').each(function(){

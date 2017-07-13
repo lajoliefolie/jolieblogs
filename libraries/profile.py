@@ -48,8 +48,8 @@ class Profile:
             db.disconnect()
             return "email_used"
         else:
-            query = "UPDATE Users SET email='{0}' WHERE email='{1}'".format(email1, session['email'])
-            db.executeUpdate(query)
+            query = "UPDATE Users SET email=%s WHERE email=%s;"
+            db.executeUpdate(query, (email1, session['email']))
             session['email'] = email1
             db.disconnect()
             return "valid_update"
@@ -85,8 +85,8 @@ class Profile:
             db.disconnect()
             return "password_fail"
         else:
-            query = "UPDATE Users SET password='{0}' WHERE email='{1}'".format(hashlib.sha256(pw1 + salt).hexdigest(), session['email'])
-            db.executeUpdate(query)
+            query = "UPDATE Users SET password=%s WHERE email=%s;"
+            db.executeUpdate(query, (hashlib.sha256(pw1 + salt).hexdigest(), session['email']))
             db.disconnect()
             return "valid_update"
             
@@ -95,8 +95,8 @@ class Profile:
     def delete_user(self, userid):
         db = DBHandler()
         db.connect()
-        query = "DELETE FROM Users WHERE userid = {0};".format(str(userid))
-        db.executeUpdate(query)
+        query = "DELETE FROM Users WHERE userid = %s;"
+        db.executeUpdate(query, (str(userid)))
         print(query)
         db.disconnect()
         if(str(userid) == str(session['userid'])):

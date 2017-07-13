@@ -18,8 +18,8 @@ class DBHandler():
     
     # Handles alters, inserts, etc.
     @classmethod
-    def executeUpdate(self, query):
-        self.cursor.execute(query)
+    def executeUpdate(self, query, args):
+        self.cursor.execute(query, args)
         self.conn.commit()
         
     # Resets user increment to keep userid values low

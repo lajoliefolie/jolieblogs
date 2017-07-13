@@ -38,9 +38,9 @@ class RegisterLib:
             pw = hashlib.sha256(pw1 + salt).hexdigest()
             # print("Register PW: " + pw)
             # print("Register Salt: " + salt)
-            query = "INSERT INTO Users (email, password, salt) values('{0}', '{1}', '{2}')".format(email, pw, salt)
+            query = "INSERT INTO Users (email, password, salt) values(%s, %s, %s);"
             db.resetUsersIncrement()
-            db.executeUpdate(query)
+            db.executeUpdate(query, (email, pw, salt))
             query = "SELECT userid, email, signup_date FROM Users WHERE email = '{0}'".format(email)
             cursor = db.executeQuery(query)
             tupl = cursor.fetchone()

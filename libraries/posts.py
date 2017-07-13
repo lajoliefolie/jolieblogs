@@ -12,9 +12,10 @@ class Posts:
         title = request.args.get('title', 0, type=str)
         text = request.args.get('text', 0, type=str)
         
-        query = "INSERT INTO Posts (userid, title, text) values ({0}, '{1}', '{2}');".format(session['userid'], title, text)
+        # query = "INSERT INTO Posts (userid, title, text) values ({0}, '{1}', '{2}');".format(session['userid'], title, text)
+        query = "INSERT INTO Posts (userid, title, text) values (%s, %s, %s);"
         print(query)
-        db.executeUpdate(query)
+        db.executeUpdate(query, (session['userid'], title, text))
         db.disconnect()
         return "valid_post"
     
