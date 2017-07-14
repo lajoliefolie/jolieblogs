@@ -11,23 +11,20 @@ class LoginLib:
     # Login function used with jQuery implementation
     @classmethod
     def login_js(self, request):
-        # print("LOGIN_JS HIT!")
         db = DBHandler()
         db.connect()
         formEmail = request.args.get('returnEmail', 0, type=str)
         formPassword = request.args.get('returnPassword', 0, type=str)
         password = ""
-        # print(email)
-        # print(password)
+
         query = ("SELECT userid, email, password, salt, signup_date FROM Users " + \
                 "WHERE email = '{0}'".format(formEmail))
         cursor = db.executeQuery(query)
         
         
         tupl = cursor.fetchone()
-        # print(tupl)
         db.disconnect()
-        # print(tupl)
+
         if not (tupl == None):
             userid = tupl[0]
             email = tupl[1]
@@ -37,13 +34,7 @@ class LoginLib:
             
             formPassword = hashlib.sha256(formPassword + salt).hexdigest()
             
-            # print("Login PW: " + formPassword)
-            # print("Login Salt: " + salt)
-            
             if (password == formPassword):
-                # print("Email: " + email)
-                # print("PW: " + password)
-                
                 perms = CheckPermissions()
                 isadmin = perms.check_permissions("admin", userid)
                 
@@ -53,10 +44,8 @@ class LoginLib:
                 session['email'] = user.get_email()
                 session['signupdate'] = user.get_signupdate()
                 
-                # print("Rester ici!")
                 return True
             else:
-                # print("Retour au login...")
                 return False
         return False
             
@@ -64,10 +53,7 @@ class LoginLib:
         # for(Userid, Email, Password) in cursor:
         #     userid = Userid
         #     password = Password
-        #     # print(password)
-        #     # print("Email: {}. PW: {}".format(Email, Password))
         
-        # print("Got here")
     
     # Deprecated pre-jQuery login function
     # @classmethod
