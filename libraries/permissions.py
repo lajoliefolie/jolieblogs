@@ -18,11 +18,11 @@ class CheckPermissions:
         cursor = db.executeQuery(query)
         tupls = cursor.fetchall()
         match = False
-        print(tupls)
+        # print(tupls)
         for (userid, permission) in tupls:
             if permission in permission_reqs:
                 match = True
-        print(match)
+        # print(match)
         db.disconnect()
         # print(match)
         return match

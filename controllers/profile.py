@@ -34,7 +34,6 @@ def update_email():
 def email_check():
     profile = Profile()
     update_code = profile.update_email(request)
-    print(update_code)
     return jsonify(update_code)
     
 # Loads update password form upon click
@@ -47,7 +46,6 @@ def update_password():
 def password_check():
     profile = Profile()
     update_code = profile.update_password(request)
-    print(update_code)
     return jsonify(update_code)
 
 # Deletes the user from the database
@@ -55,6 +53,5 @@ def password_check():
 def delete_user():
     profile = Profile()
     userid = request.args.get("uid", 0, type=str)
-    print(userid)
     tupls = profile.delete_user(userid)
     return redirect(url_for("login.logout"))

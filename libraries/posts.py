@@ -14,7 +14,7 @@ class Posts:
         
         # query = "INSERT INTO Posts (userid, title, text) values ({0}, '{1}', '{2}');".format(session['userid'], title, text)
         query = "INSERT INTO Posts (userid, title, text) values (%s, %s, %s);"
-        print(query)
+        # print(query)
         db.executeUpdate(query, (session['userid'], title, text))
         db.disconnect()
         return "valid_post"
@@ -28,7 +28,7 @@ class Posts:
         query = "SELECT * FROM Posts WHERE userid = {0} ORDER BY date DESC;".format(userid)
         cursor = db.executeQuery(query)
         tupls = cursor.fetchall()
-        print(tupls)
+        # print(tupls)
         return tupls
     
     # Returns all posts made by all users

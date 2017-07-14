@@ -74,8 +74,8 @@ class Profile:
         pw_retr = tupl[0]
         salt = tupl[1]
         pwConf = hashlib.sha256(pwConf + salt).hexdigest()
-        print(pwConf)
-        print(pw_retr)
+        # print(pwConf)
+        # print(pw_retr)
         if pw1 != pw2:
             # print("Email already registered.")
             db.disconnect()

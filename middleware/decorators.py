@@ -12,8 +12,6 @@ def reqRolesSendTo(destination_str, *roles):
         
         @wraps(f)
         def wrapped(*args, **kwargs):
-            print(roles)
-            print(session['userid'])
             if not CheckPermissions().check_permissions(roles, session['userid']):
                 return redirect(destination_str)
                 

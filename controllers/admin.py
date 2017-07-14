@@ -41,7 +41,7 @@ def update_admin():
     userid = request.args.get('userid', 0, type=str)
     isadmin = request.args.get('isadmin', 0, type=str)
     tupls = admin.retrieve_user_data()
-    print(tupls)
+    # print(tupls)
     tupls = admin.update_admin(userid, isadmin)
     return jsonify(tupls)
 

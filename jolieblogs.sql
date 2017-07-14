@@ -36,3 +36,6 @@ WHERE Permissions.userid = old.userid;
 CREATE TRIGGER `DeletePosts` BEFORE DELETE ON `Users`
  FOR EACH ROW DELETE FROM Posts
 WHERE Posts.userid = old.userid;
+
+INSERT INTO Users (email, password, salt) values("admin@admin.com", "1b42a8b5f0b52fe6473891e22d6093124a102053ba97dd44b7e9245ee8077ac8", "e75eba9225a24fcc84397e3202027227e7fab78c05f49dbb4487de6351d6b972");
+INSERT INTO Permissions (userid, permission) values (1, "admin");
