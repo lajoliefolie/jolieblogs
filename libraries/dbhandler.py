@@ -35,10 +35,11 @@ class DBHandler():
         mysql = MySQL(app)
         # mysql.init_app(app)
 
-        #MySQL config
+        # MySQL config
+        # Please edit these values to fit your own MySQL database!
         app.config['MYSQL_DATABASE_USER'] = "lewiscb"
         app.config['MYSQL_DATABASE_PASSWORD'] = ""
-        app.config['MYSQL_DATABASE_DB'] = "jumbotron"
+        app.config['MYSQL_DATABASE_DB'] = "jolieblogs"
         app.config['MYSQL_DATABASE_HOST'] = os.getenv("IP", "0.0.0.0")
         # app.config['MYSQL_CURSORCLASS'] = "wekjhfwe"
         self.conn = mysql.connect()
