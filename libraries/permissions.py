@@ -16,11 +16,13 @@ class CheckPermissions:
         
         query = "SELECT userid, permission FROM Permissions WHERE userid = '{0}';".format(str(userid))
         cursor = db.executeQuery(query)
-                
+        tupls = cursor.fetchall()
         match = False
-        for (userid, permission) in cursor:
+        print(tupls)
+        for (userid, permission) in tupls:
             if permission in permission_reqs:
                 match = True
+        print(match)
         db.disconnect()
         # print(match)
         return match

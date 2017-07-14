@@ -23,7 +23,7 @@ class AdminPage():
         db.connect()
         query = "";
         isadmin = isadmin=="admin"
-        print("AM I BEING CALLED TWICE????")
+        # print("AM I BEING CALLED TWICE????")
         if(isadmin):
             query = "DELETE FROM Permissions WHERE userid = %s and permission = 'admin';"
         else:
@@ -39,7 +39,7 @@ class AdminPage():
     def delete_user(self, userid):
         db = DBHandler()
         db.connect()
-        print("AM I (DELETE) BEING CALLED TWICE????")
+        # print("AM I (DELETE) BEING CALLED TWICE????")
         query = "DELETE FROM Users WHERE userid = %s;"
         db.executeUpdate(query, (userid))
         # print(query)

@@ -56,7 +56,6 @@ class RegisterLib:
             user.create_user(userid, email, isadmin, signupdate)
             session['userid'] = user.get_userid()
             session['email'] = user.get_email()
-            session['isadmin'] = user.get_isadmin()
             session['signupdate'] = user.get_signupdate()
             
             return "valid_register"

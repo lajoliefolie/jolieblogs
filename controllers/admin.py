@@ -5,6 +5,7 @@ from libraries.permissions import CheckPermissions
 from libraries.posts import Posts
 from jinja2 import Template
 from libraries.user import User
+from middleware.decorators import reqRolesSendTo
 
 # controller for admin url prefix
 admin = Blueprint("admin",__name__,template_folder='templates')
@@ -12,14 +13,19 @@ admin = Blueprint("admin",__name__,template_folder='templates')
 # Base admin route
 # Checks permissions of the user, and if admin permissions are not found, denies access
 @admin.route("/")
+@reqRolesSendTo("blank.html", "admin")
 def admin_check():
-    perms = CheckPermissions()
-    user = User()
-    user = user.get_user_data(session['userid'])
-    if(perms.check_permissions(["admin"], session["userid"])):
-        return render_template("user_control/admin_panel.html")
-    else:
-        return render_template("denied.html")
+    return render_template("user_control/admin_panel.html")
+
+# @admin.route("/")
+# def admin_check():
+#     perms = CheckPermissions()
+#     user = User()
+#     user = user.get_user_data(session['userid'])
+#     if(perms.check_permissions(["admin"], session["userid"])):
+#         return render_template("user_control/admin_panel.html")
+#     else:
+#         return render_template("denied.html")
 
 # Loading user data for admin controls
 @admin.route("/load_user_data", methods=["GET", "POST"])
