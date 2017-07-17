@@ -1,6 +1,14 @@
 import mysql.connector
 import os
 
+# AUTHOR'S NOTE:
+# This is a db library meant for a strictly mysql python backend, without flask-mysql.
+# Something important to know is that when parameterizing queries, it MUST be formatted differently.
+# In the executeTest() function, there is an example of how SELECT statements must be formatted with user input.
+# It does not seem to work the same way for non-query statements. More research needs to be done.
+# The code is currently set up to use the simple %s setup for SELECT statements, since that seems to work with flask-mysql.
+# This means that in order to use non-flask mysql, you must edit the select statements to look like it is in executeTest (with the %(varname)s) and dict parameter.
+
 # Model for database functions
 class DBHandler():
     
