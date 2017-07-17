@@ -18,7 +18,7 @@ class RegisterLib:
         pw1 = request.args.get('returnPassword', 0, type=str)
         pw2 = request.args.get('confirmPassword', 0, type=str)
         query = ("SELECT email, password FROM Users " + \
-                "WHERE email = '%s';")
+                "WHERE email = %s;")
         cursor = db.executeQuery(query, (email))
 
         tupl = cursor.fetchone()
@@ -34,7 +34,7 @@ class RegisterLib:
             query = "INSERT INTO Users (email, password, salt) values(%s, %s, %s);"
             db.resetUsersIncrement()
             db.executeUpdate(query, (email, pw, salt))
-            query = "SELECT userid, email, signup_date FROM Users WHERE email = '%s';"
+            query = "SELECT userid, email, signup_date FROM Users WHERE email = %s;"
             cursor = db.executeQuery(query, (email))
             tupl = cursor.fetchone()
             
