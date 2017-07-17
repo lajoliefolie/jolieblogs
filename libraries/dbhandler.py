@@ -13,8 +13,8 @@ class DBHandler():
     @classmethod
     def executeQuery(self, query, args):
         # self.cursor = self.conn.cursor(dictionary=True)
-        print(query)
-        print(args)
+        # print(query)
+        # print(args)
         self.cursor.execute(query, args)
         return self.cursor
     
