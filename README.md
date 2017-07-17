@@ -30,7 +30,7 @@ This will allow you to create your own account, then sign into the default accou
 
 * Edit your dbhandler.py to connect to your database configuration, as well as your host and port information in app.py.
 
-*Run app.py!
+* Run app.py!
 
 ## Authors:
 
