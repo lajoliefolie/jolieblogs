@@ -1,7 +1,4 @@
 from flask import Flask
-from flask_wtf.csrf import CSRFProtect
-from flask_bootstrap import Bootstrap
-
 import os
 
 app = Flask(__name__)
