@@ -14,8 +14,8 @@ class CheckPermissions:
         db = DBHandler()
         db.connect()
         
-        query = "SELECT userid, permission FROM Permissions WHERE userid = '{0}';".format(str(userid))
-        cursor = db.executeQuery(query)
+        query = "SELECT userid, permission FROM Permissions WHERE userid = %s;"
+        cursor = db.executeQuery(query, (str(userid)))
         tupls = cursor.fetchall()
         match = False
         # print(tupls)

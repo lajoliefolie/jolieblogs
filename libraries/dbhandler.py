@@ -11,9 +11,11 @@ class DBHandler():
     # Executes queries for data needs
     # Returns the query result
     @classmethod
-    def executeQuery(self, query):
+    def executeQuery(self, query, args):
         # self.cursor = self.conn.cursor(dictionary=True)
-        self.cursor.execute(query)
+        print(query)
+        print(args)
+        self.cursor.execute(query, args)
         return self.cursor
     
     # Handles alters, inserts, etc.

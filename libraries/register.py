@@ -21,8 +21,8 @@ class RegisterLib:
         # print(pw1)
         # print(pw2)
         query = ("SELECT email, password FROM Users " + \
-                "WHERE email = '{0}'".format(email))
-        cursor = db.executeQuery(query)
+                "WHERE email = '%s';")
+        cursor = db.executeQuery(query, (email))
 
         tupl = cursor.fetchone()
         if (tupl != None) and (tupl[0] == email):
@@ -41,8 +41,8 @@ class RegisterLib:
             query = "INSERT INTO Users (email, password, salt) values(%s, %s, %s);"
             db.resetUsersIncrement()
             db.executeUpdate(query, (email, pw, salt))
-            query = "SELECT userid, email, signup_date FROM Users WHERE email = '{0}'".format(email)
-            cursor = db.executeQuery(query)
+            query = "SELECT userid, email, signup_date FROM Users WHERE email = '%s';"
+            cursor = db.executeQuery(query, (email))
             tupl = cursor.fetchone()
             
             userid = tupl[0]

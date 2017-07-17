@@ -19,8 +19,8 @@ class Profile:
         # print(pw1)
         # print(pw2)
         query = ("SELECT password, salt FROM Users " + \
-                "WHERE email = '{0}'".format(session['email']))
-        cursor = db.executeQuery(query)
+                "WHERE email = %s;")
+        cursor = db.executeQuery(query, session['email'])
 
         tupl = cursor.fetchone()
         pw_retr = tupl[0]
@@ -28,8 +28,8 @@ class Profile:
         pw = hashlib.sha256(pw + salt).hexdigest()
         
         query = ("SELECT email FROM Users " + \
-                "WHERE email = '{0}'".format(email1))
-        cursor = db.executeQuery(query)
+                "WHERE email = %s;")
+        cursor = db.executeQuery(query, email1)
         tupl = cursor.fetchone()
         
         # print(email1)
@@ -67,8 +67,8 @@ class Profile:
         # print(pw1)
         # print(pw2)
         query = ("SELECT password, salt FROM Users " + \
-                "WHERE email = '{0}'".format(session['email']))
-        cursor = db.executeQuery(query)
+                "WHERE email = %s")
+        cursor = db.executeQuery(query, (session['email']))
 
         tupl = cursor.fetchone()
         pw_retr = tupl[0]

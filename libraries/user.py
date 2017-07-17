@@ -15,8 +15,8 @@ class User:
     def get_user_data(self, userid):
         db = DBHandler()
         db.connect()
-        query = "SELECT email, signup_date FROM Users where userid = {0};".format(str(userid))
-        cursor = db.executeQuery(query)
+        query = "SELECT email, signup_date FROM Users where userid = %s;"
+        cursor = db.executeQuery(query, (str(userid)))
         tupl = cursor.fetchone()
         return tupl
     

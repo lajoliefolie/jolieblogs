@@ -4,6 +4,7 @@ import hashlib
 from libraries.permissions import CheckPermissions
 from libraries.user import User
 from json import JSONEncoder
+import time
 
 # Model for login functions
 class LoginLib:
@@ -11,15 +12,17 @@ class LoginLib:
     # Login function used with jQuery implementation
     @classmethod
     def login_js(self, request):
-        db = DBHandler()
-        db.connect()
         formEmail = request.args.get('returnEmail', 0, type=str)
         formPassword = request.args.get('returnPassword', 0, type=str)
         password = ""
+        
+        # try:
+        #     if (session['login_attempts'][0]):
 
-        query = ("SELECT userid, email, password, salt, signup_date FROM Users " + \
-                "WHERE email = '{0}'".format(formEmail))
-        cursor = db.executeQuery(query)
+        db = DBHandler()
+        db.connect()
+        query = ("SELECT userid, email, password, salt, signup_date FROM Users WHERE email = %s;")
+        cursor = db.executeQuery(query, (formEmail))
         
         
         tupl = cursor.fetchone()
@@ -46,6 +49,7 @@ class LoginLib:
                 
                 return True
             else:
+                time.sleep(0.4)
                 return False
         return False
             

@@ -10,7 +10,7 @@ class AdminPage():
         db = DBHandler()
         db.connect()
         query = "SELECT userid, email, signup_date, permissions FROM GetPermissions"
-        cursor = db.executeQuery(query)
+        cursor = db.executeQuery(query, ())
         tupls = cursor.fetchall()
         # print(tupls[0])
         # print(tupls[1])

@@ -25,8 +25,8 @@ class Posts:
         db = DBHandler()
         db.connect()
         
-        query = "SELECT * FROM Posts WHERE userid = {0} ORDER BY date DESC;".format(userid)
-        cursor = db.executeQuery(query)
+        query = "SELECT * FROM Posts WHERE userid = %s ORDER BY date DESC;"
+        cursor = db.executeQuery(query, userid)
         tupls = cursor.fetchall()
         # print(tupls)
         return tupls
@@ -38,7 +38,7 @@ class Posts:
         db.connect()
         
         query = "SELECT * FROM Posts ORDER BY date DESC;"
-        cursor = db.executeQuery(query)
+        cursor = db.executeQuery(query, ())
         tupls = cursor.fetchall()
         # print(tupls)
         return tupls
