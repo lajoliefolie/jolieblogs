@@ -12,9 +12,6 @@ class DBHandler():
     # Returns the query result
     @classmethod
     def executeQuery(self, query, args):
-        # self.cursor = self.conn.cursor(dictionary=True)
-        # print(query)
-        # print(args)
         self.cursor.execute(query, args)
         return self.cursor
     
@@ -35,7 +32,6 @@ class DBHandler():
     def connect(self):
         from app import app
         mysql = MySQL(app)
-        # mysql.init_app(app)
 
         # MySQL config
         # Please edit these values to fit your own MySQL database!
@@ -43,11 +39,8 @@ class DBHandler():
         app.config['MYSQL_DATABASE_PASSWORD'] = ""
         app.config['MYSQL_DATABASE_DB'] = "jolieblogs"
         app.config['MYSQL_DATABASE_HOST'] = os.getenv("IP", "0.0.0.0")
-        # app.config['MYSQL_CURSORCLASS'] = "wekjhfwe"
         self.conn = mysql.connect()
-        # self.cursor = mysql.get_db().cursor(mdb.cursors.DictCursor)
         self.cursor = self.conn.cursor()
-        # print("Connected!")
         
     # Disconects; used for clean up
     @classmethod

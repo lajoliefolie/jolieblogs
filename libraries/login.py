@@ -16,9 +16,6 @@ class LoginLib:
         formPassword = request.args.get('returnPassword', 0, type=str)
         password = ""
         
-        # try:
-        #     if (session['login_attempts'][0]):
-
         db = DBHandler()
         db.connect()
         query = ("SELECT userid, email, password, salt, signup_date FROM Users WHERE email = %s;")
@@ -52,42 +49,3 @@ class LoginLib:
                 time.sleep(0.4)
                 return False
         return False
-            
-    
-        # for(Userid, Email, Password) in cursor:
-        #     userid = Userid
-        #     password = Password
-        
-    
-    # Deprecated pre-jQuery login function
-    # @classmethod
-    # def login(self, request):
-    #     # print("LOGIN HIT!")
-    #     db = DBHandler()
-    #     db.connect()
-    #     email = request.form["returnEmail"]
-    #     password = request.form["returnPassword"]
-    #     passwordRetrieved = ""
-    #     # print(email)
-    #     # print(password)
-    #     query = ("SELECT email, password FROM Users " + \
-    #             "WHERE email = '"+email+"' AND password = '"+password+"'")
-    #     cursor = db.executeQuery(query)
-    #     db.disconnect()
-    
-    #     for(Email, Password) in cursor:
-    #         emailRetrieved = Email
-    #         passwordRetrieved = Password
-    #         # print("Email: {}. PW: {}".format(Email, Password))
-        
-    #     print("Got here")
-    #     if request.method == 'POST' and \
-    #     (passwordRetrieved == password):
-    #         # print("POST!")
-    #         # print("Email: " + email)
-    #         # print("PW: " + password)
-    #         session['email'] = email
-    #         return True
-    #     else:
-    #         # print("Retour au login...")
-    #         return False

@@ -12,9 +12,7 @@ class Posts:
         title = request.args.get('title', 0, type=str)
         text = request.args.get('text', 0, type=str)
         
-        # query = "INSERT INTO Posts (userid, title, text) values ({0}, '{1}', '{2}');".format(session['userid'], title, text)
         query = "INSERT INTO Posts (userid, title, text) values (%s, %s, %s);"
-        # print(query)
         db.executeUpdate(query, (session['userid'], title, text))
         db.disconnect()
         return "valid_post"
@@ -28,7 +26,6 @@ class Posts:
         query = "SELECT * FROM Posts WHERE userid = %s ORDER BY date DESC;"
         cursor = db.executeQuery(query, userid)
         tupls = cursor.fetchall()
-        # print(tupls)
         return tupls
     
     # Returns all posts made by all users
@@ -40,5 +37,4 @@ class Posts:
         query = "SELECT * FROM Posts ORDER BY date DESC;"
         cursor = db.executeQuery(query, ())
         tupls = cursor.fetchall()
-        # print(tupls)
         return tupls

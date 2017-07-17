@@ -15,15 +15,12 @@ $(function() {
        
         var title1 = findElement(vals, "name", "title")["value"];
         var text1 = findElement(vals,  "name", "text")["value"];
-           
-        // console.log(email + " " + password1)
             
             $.getJSON("/posts/post_post", { //.get
             title: title1,
             text: text1 
             }, function (data) {
                 if(data == "valid_post"){
-                    // console.log("Valid! Woo!");
                     title.value = '';
                     text.value = '';
                     if(location.href.includes("admin") || location.href.includes("profile")) {
@@ -39,41 +36,7 @@ $(function() {
                             $( "#get_posts" ).html( data );
                         });
                     }
-                    // get_posts.reload();
                 }
             });
     })
 });
-
-
-// $(function() {
-//     //$('a#signin').bind('click', function() {
-//     $('form#make_post').submit(function(event){
-//         var vals = $( this ).serializeArray();
-//         console.log(vals);
-//         function findElement(vals, propName, propValue){
-//             for (var i=0; i < vals.length; i++)
-//                 if (vals[i][propName] == propValue)
-//                     return vals[i];
-//         }
-        
-//         var title1 = findElement(vals, "name", "title")["value"];
-//         var text1 = findElement(vals, "name", "text")["value"];
-            
-//         console.log(title1);
-//         console.log(text1);
-            
-//         $.getJSON("post_post", {
-//         title: title1,
-//         text: text1
-//         }, function (data) {
-//             console.log(data)
-//             // // console.log(data);
-//             // if(data == "valid_post"){
-//             //     // console.log("Valid! Woo!");
-//             //     title.value = '';
-//             //     text = '';
-//             // }
-//         });
-//     })
-// });

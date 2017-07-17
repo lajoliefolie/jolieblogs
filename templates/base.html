@@ -41,11 +41,7 @@
                     
                     {% if session['userid'] %}
                         <li role="presentation"><a href="/login/logout">Logout</a></li>
-                        <!--{% if session['isadmin'] %}-->
-                        <!--<li role="presentation" {% block admin_active %}{% endblock %}><a href="/profile?uid={{ session['userid'] }}">Admin Profile</a></li>-->
-                        <!--{% else %}-->
                         <li role="presentation" {% block nonadmin_active %}{% endblock %}><a href="/profile?uid={{ session['userid'] }}">Profile</a></li>
-                        <!--{% endif %}-->
                     {% else %}
                         <li role="presentation" {% block signin_active %}{% endblock %}><a href="/login">Sign In</a></li>
                         <li role="presentation" {% block signup_active %}{% endblock %}><a href="/register">Sign Up</a></li>

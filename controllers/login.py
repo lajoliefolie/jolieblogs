@@ -16,28 +16,14 @@ def login_view():
 @login.route("/completed_js", methods = ["GET", "POST"])
 def completed_js():
     loggerin = LoginLib()
-    # print("COMPLETED HIT")
     if loggerin.login_js(request):
-        # print("logged! JSJS")
-        # print(session['userid'])
         return jsonify("valid_login")
     else:
         return jsonify("invalid_login")
         
-# Deprecated login completed function; this was before jQuery implementation.
-# @login.route("/completed", methods = ["GET", "POST"])
-# def completed():
-#     loggerin = LoginLib()
-#     # print("COMPLETED HIT")
-#     if loggerin.login(request):
-#         return redirect(url_for('main.main_view',))
-#     else:
-#         return redirect(url_for('login.login_view'))
-        
 # Logout function that pops session variables and redirects.
 @login.route("/logout")
 def logout():
-    # print(session['userid'])
     session.pop('userid', None)
     session.pop('isadmin', None)
     session.pop('email', None)

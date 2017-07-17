@@ -12,9 +12,7 @@ def register_view():
 # jQuery called method to check validity of register form values, and finish otherwise
 @register.route("/check", methods = ["POST", "GET"])
 def check():
-    # print("Here!")
     reg = RegisterLib()
     code = reg.check(request)
-    # print(code)
     return jsonify(code)
         

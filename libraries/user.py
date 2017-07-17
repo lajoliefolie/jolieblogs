@@ -24,7 +24,6 @@ class User:
     @classmethod
     def generate_pic_hash(self, signup_date):
         pic_hash = md5.new(str(signup_date)).hexdigest()
-        # print(pic_hash)
         return pic_hash
     
     # Would-be function to set user variables on creation

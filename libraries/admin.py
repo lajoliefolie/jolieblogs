@@ -12,8 +12,6 @@ class AdminPage():
         query = "SELECT userid, email, signup_date, permissions FROM GetPermissions"
         cursor = db.executeQuery(query, ())
         tupls = cursor.fetchall()
-        # print(tupls[0])
-        # print(tupls[1])
         return tupls
         
     # Updates administrator privileges
@@ -23,13 +21,11 @@ class AdminPage():
         db.connect()
         query = "";
         isadmin = isadmin=="admin"
-        # print("AM I BEING CALLED TWICE????")
         if(isadmin):
             query = "DELETE FROM Permissions WHERE userid = %s and permission = 'admin';"
         else:
             query = "INSERT INTO Permissions (userid, permission) VALUES (%s, 'admin');"
         
-        # print(query)
         db.executeUpdate(query, (str(userid)))
         db.disconnect()
         return True
@@ -39,10 +35,8 @@ class AdminPage():
     def delete_user(self, userid):
         db = DBHandler()
         db.connect()
-        # print("AM I (DELETE) BEING CALLED TWICE????")
         query = "DELETE FROM Users WHERE userid = %s;"
         db.executeUpdate(query, (userid))
-        # print(query)
         db.disconnect()
         if(str(userid) == str(session['userid'])):
             return "deleted_logout"

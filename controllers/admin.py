@@ -17,16 +17,6 @@ admin = Blueprint("admin",__name__,template_folder='templates')
 def admin_check():
     return render_template("user_control/admin_panel.html")
 
-# @admin.route("/")
-# def admin_check():
-#     perms = CheckPermissions()
-#     user = User()
-#     user = user.get_user_data(session['userid'])
-#     if(perms.check_permissions(["admin"], session["userid"])):
-#         return render_template("user_control/admin_panel.html")
-#     else:
-#         return render_template("denied.html")
-
 # Loading user data for admin controls
 @admin.route("/load_user_data", methods=["GET", "POST"])
 def load_user_data():
@@ -41,7 +31,6 @@ def update_admin():
     userid = request.args.get('userid', 0, type=str)
     isadmin = request.args.get('isadmin', 0, type=str)
     tupls = admin.retrieve_user_data()
-    # print(tupls)
     tupls = admin.update_admin(userid, isadmin)
     return jsonify(tupls)
 

@@ -20,16 +20,12 @@ $(function() {
             returnEmail: email,
             returnPassword: password
             }, function (data) {
-                // console.log(data);
                 if(data == "valid_login"){
-                    // console.log("Valid! Woo!");
                     window.location = main_view
                 }
                 else if(data == "invalid_login"){
-                    // console.log("Invalid! Nooooo!");
                     inputPassword.value = '';
                     document.getElementById("login_message").innerHTML = "Invalid email/password combination."
-                    // $("login_message").load("Invalid email/password combination."); 
                 }
             });
     })

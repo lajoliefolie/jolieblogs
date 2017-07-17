@@ -15,10 +15,7 @@ $(document).ready(function(){
                 
                 var add_or_rem_admin = "Add Admin";
                 var is_admin = "notadmin";
-                // console.log(result[i][3]);
-                // console.log(result[i][3].indexOf("admin"));
                 if(result[i][3].indexOf("admin")!=-1){
-                    //console.log(result[i][3]);
                     add_or_rem_admin = "Remove Admin";
                     is_admin = "admin";
                 }
@@ -66,14 +63,3 @@ $(document).ready(function(){
     });
         
 });
-// $(document).ready(function()
-// {   
-//     $('.buttons').each(function(){
-//         $(this).click(function(){
-//             console.log("GOT ONE!");
-//         });
-        
-//     // document.getElementById('textContainer').value += this.innerHTML;
-//     // alert(this.innerHTML);
-//     });
-// });

@@ -17,8 +17,6 @@ def make_post():
 def submit_post():
     title = request.args.get('title', 0, type=str)
     text = request.args.get('text', 0, type=str)
-    # print(title)
-    # print(text)
     userPost = Posts()
     userPost = userPost.makePost(request)
     return jsonify(userPost)
@@ -36,10 +34,8 @@ def get_user_posts():
         for element in post:
             tmp.append(element)
         tmp.append(user.generate_pic_hash(user.get_user_data(post[0])[1]))
-        # var = post + (user.generate_pic_hash(user.get_user_data(post[0])[1]))
         postsArray.append(tmp)
         
-    # print(userPosts)
     return render_template("posts/userposts.html", posts=postsArray)
     
 # Returns all posts
@@ -49,15 +45,12 @@ def get_all_posts():
     userPosts = Posts()
     userPosts = userPosts.getAllPosts()
     user = User()
-    # tmp_hash = user.generate_pic_hash(user.get_user_data(userPosts[i][0])[1])
     postsArray = []
     for post in userPosts:
         tmp = []
         for element in post:
             tmp.append(element)
         tmp.append(user.generate_pic_hash(user.get_user_data(post[0])[1]))
-        # var = post + (user.generate_pic_hash(user.get_user_data(post[0])[1]))
         postsArray.append(tmp)
         
-    # print(userPosts)
     return render_template("posts/userposts.html", posts=postsArray)

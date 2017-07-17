@@ -17,27 +17,20 @@ class RegisterLib:
         email = request.args.get('returnEmail', 0, type=str)
         pw1 = request.args.get('returnPassword', 0, type=str)
         pw2 = request.args.get('confirmPassword', 0, type=str)
-        # print(email)
-        # print(pw1)
-        # print(pw2)
         query = ("SELECT email, password FROM Users " + \
                 "WHERE email = '%s';")
         cursor = db.executeQuery(query, (email))
 
         tupl = cursor.fetchone()
         if (tupl != None) and (tupl[0] == email):
-            # print("Email already registered.")
             db.disconnect()
             return "email_registered"
         elif not pw1 == pw2:
-            # print("Passwords don't match.")
             db.disconnect()
             return "pw_match"
         else:
             salt = hashlib.sha256(urandom(256)).hexdigest()
             pw = hashlib.sha256(pw1 + salt).hexdigest()
-            # print("Register PW: " + pw)
-            # print("Register Salt: " + salt)
             query = "INSERT INTO Users (email, password, salt) values(%s, %s, %s);"
             db.resetUsersIncrement()
             db.executeUpdate(query, (email, pw, salt))

@@ -15,9 +15,6 @@ class Profile:
         email1 = request.args.get('returnEmail', 0, type=str)
         email2 = request.args.get('returnConfEmail', 0, type=str)
         pw = request.args.get('returnPassword', 0, type=str)
-        # print(email)
-        # print(pw1)
-        # print(pw2)
         query = ("SELECT password, salt FROM Users " + \
                 "WHERE email = %s;")
         cursor = db.executeQuery(query, session['email'])
@@ -31,17 +28,11 @@ class Profile:
                 "WHERE email = %s;")
         cursor = db.executeQuery(query, email1)
         tupl = cursor.fetchone()
-        
-        # print(email1)
-        # print(email2)
-        # print(pw)
-        # print(pw_retr)
+
         if email1 != email2:
-            # print("Email already registered.")
             db.disconnect()
             return "email_nomatch"
         elif pw != pw_retr:
-            # print("Passwords don't match.")
             db.disconnect()
             return "password_fail"
         elif tupl != None:
@@ -63,9 +54,6 @@ class Profile:
         pw1 = request.args.get('pw1', 0, type=str)
         pw2 = request.args.get('pw2', 0, type=str)
         pwConf = request.args.get('returnPassword', 0, type=str)
-        # print(email)
-        # print(pw1)
-        # print(pw2)
         query = ("SELECT password, salt FROM Users " + \
                 "WHERE email = %s")
         cursor = db.executeQuery(query, (session['email']))
@@ -74,14 +62,10 @@ class Profile:
         pw_retr = tupl[0]
         salt = tupl[1]
         pwConf = hashlib.sha256(pwConf + salt).hexdigest()
-        # print(pwConf)
-        # print(pw_retr)
         if pw1 != pw2:
-            # print("Email already registered.")
             db.disconnect()
             return "password_nomatch"
         elif pwConf != pw_retr:
-            # print("Passwords don't match.")
             db.disconnect()
             return "password_fail"
         else:
@@ -97,7 +81,6 @@ class Profile:
         db.connect()
         query = "DELETE FROM Users WHERE userid = %s;"
         db.executeUpdate(query, (str(userid)))
-        print(query)
         db.disconnect()
         if(str(userid) == str(session['userid'])):
             return "deleted_logout"
