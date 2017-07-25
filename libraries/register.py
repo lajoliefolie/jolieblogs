@@ -9,7 +9,6 @@ from libraries.user import User
 class RegisterLib:
     
     # Handles registration of user
-    @classmethod
     def check(self, request):
         db = DBHandler()
         db.connect()

@@ -5,7 +5,6 @@ from flask import session
 class Posts:
     
     # Creates and submits a post
-    @classmethod
     def makePost(self, request):
         db = DBHandler()
         db.connect()
@@ -18,7 +17,6 @@ class Posts:
         return "valid_post"
     
     # Returns all posts made by specified user
-    @classmethod
     def getUserPosts(self, userid):
         db = DBHandler()
         db.connect()
@@ -29,7 +27,6 @@ class Posts:
         return tupls
     
     # Returns all posts made by all users
-    @classmethod
     def getAllPosts(self):
         db = DBHandler()
         db.connect()

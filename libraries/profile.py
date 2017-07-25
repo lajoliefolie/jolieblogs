@@ -7,7 +7,6 @@ from libraries.permissions import CheckPermissions
 class Profile:
     
     # Handles updating email for users
-    @classmethod
     def update_email(self, request):
         db = DBHandler()
         db.connect()
@@ -46,7 +45,6 @@ class Profile:
             return "valid_update"
         
     # Handles updating password for users
-    @classmethod
     def update_password(self, request):
         db = DBHandler()
         db.connect()
@@ -75,7 +73,6 @@ class Profile:
             return "valid_update"
             
     # Handles deleing profile for users
-    @classmethod
     def delete_user(self, userid):
         db = DBHandler()
         db.connect()

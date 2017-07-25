@@ -10,7 +10,6 @@ import time
 class LoginLib:
     
     # Login function used with jQuery implementation
-    @classmethod
     def login_js(self, request):
         formEmail = request.args.get('returnEmail', 0, type=str)
         formPassword = request.args.get('returnPassword', 0, type=str)

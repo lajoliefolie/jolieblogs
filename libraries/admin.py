@@ -5,7 +5,6 @@ from flask import session
 class AdminPage():
     
     # Selects user information
-    @classmethod
     def retrieve_user_data(self):
         db = DBHandler()
         db.connect()
@@ -15,7 +14,6 @@ class AdminPage():
         return tupls
         
     # Updates administrator privileges
-    @classmethod
     def update_admin(self, userid, isadmin):
         db = DBHandler()
         db.connect()
@@ -31,7 +29,6 @@ class AdminPage():
         return True
         
     # Deletes users from the database; used by admin
-    @classmethod
     def delete_user(self, userid):
         db = DBHandler()
         db.connect()

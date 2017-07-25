@@ -7,7 +7,6 @@ from functools import wraps
 class CheckPermissions:
     
     # Checks permissions based on required permissions as an array, and userid
-    @classmethod
     def check_permissions(self, permission_reqs, userid):
             
         db = DBHandler()
